@@ -41,7 +41,7 @@ class MangadexScrapper:
         pages_data = raw_response.json()
 
         for image_file in pages_data['data']['attributes']['data']:
-            chapters_urls.append(base_page_url.format(chapter_hash = pages_data['hash'], chapter_url = image_file))
+            chapters_urls.append(base_page_url.format(chapter_hash = pages_data['data']['attributes']['hash'], chapter_url = image_file))
 
         return chapters_urls
 
@@ -63,6 +63,6 @@ class MangadexScrapper:
         if response.status_code != 200 or response.json().get('result') == 'error':
             raise FailedRequest(response) 
 
-if __name__ == '__main__':
-    s = MangadexScrapper()
-    result = s.search('Quinte')
+# if __name__ == '__main__':
+    # s = MangadexScrapper()
+    # result = s.search('Quinte')
